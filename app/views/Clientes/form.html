@@ -1,0 +1,25 @@
+#{extends 'main.html' /}
+#{set title:'Cadastro de Clientes'/}
+
+<div class="container p-3"> 
+	<h2>Cadastro de Clientes</h2>
+</div>
+
+<div  class="container col-4 p-4">
+	<form action="@{Clientes.cadastrar}" method="POST">
+		
+		<div class="mb-3">
+			<label class="form-label">Nome:</label>
+			<input type="text" name="cli.nome" class="form-control">
+		</div>
+		
+		<div class="mb-3">
+			<label class="form-label">Endereço</label>
+			<input type="text" name="cli.endereco" class="form-control">
+		</div>
+		
+		<div class="container d-flex justify-content-center p-3">	
+			<input class="btn btn-dark col-2 " type="submit" />
+		</div>
+	</form>
+</div>
