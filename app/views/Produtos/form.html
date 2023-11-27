@@ -1,0 +1,28 @@
+#{extends 'main.html' /}
+#{set title:'Cadastro de Produtos'/}
+
+<div> 
+	<h2>Cadastro de Produtos</h2>
+</div>
+
+<div>
+	<form action="@{Produtos.cadastrar}" method="POST">
+		
+		<input type="hidden" name="prod.id" value="${prod?.id}" />
+
+
+		<div class="mb-3">
+			<label class="form-label">Nome:</label>
+			<input type="text" name="prod.nome" class="form-control" value="${prod.nome}">
+		</div>
+		
+		<div class="mb-3">
+			<label class="form-label">Preço</label>
+			<input type="text" name="prod.preco" class="form-control" value="${prod.preco}">
+		</div>
+		
+		<div class="container d-flex justify-content-center p-3">	
+			<input class="btn btn-dark col-2 " type="submit" />
+		</div>
+	</form>
+</div>
