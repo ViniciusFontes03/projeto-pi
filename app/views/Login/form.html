@@ -1,0 +1,25 @@
+#{extends 'main.html' /}
+#{set title:'Login'/}
+
+<div class="container p-3"> 
+	<h2>Login</h2>
+</div>
+
+<div  class="container col-4 p-4">
+	<form action="@{Login.entrar}" method="POST">
+		
+		<div class="mb-3">
+			<label class="form-label">Email:</label>
+			<input type="text" name="usu.email" class="form-control">
+		</div>
+		
+		<div class="mb-3">
+			<label class="form-label">Senha</label>
+			<input type="password" name="usu.senha" class="form-control">
+		</div>
+		
+		<div class="container d-flex justify-content-center p-3">	
+			<input class="btn btn-dark col-2 " type="submit" />
+		</div>
+	</form>
+</div>
