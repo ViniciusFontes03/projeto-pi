@@ -1,0 +1,36 @@
+#{extends 'main.html' /}
+#{set title: 'Lista'/}
+
+<div class="container p-3 "> 
+    <h2>Lista de Produtos</h2>
+</div>
+<div class="container col-8 p-4 border border-success">
+
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Águas</th>
+				<th>Gás</th>
+				<th>Preco</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			#{list items:pedido, as:'ped'}
+			<tr>
+				
+				<th>${ped.nome}</th>
+				<td>${ped.endereco}</td>
+				<td>${ped.qntdAgua}</td>
+				<td>${ped.qntdGas}</td>
+				<td>${ped.valor}</td>
+			</tr>
+			#{/list}
+		</tbody>
+	</table>
+	<div class="container p-3 d-flex justify-content-center ">	
+	    <a href="@{Pedidos.form}" class=" col-2 btn btn-dark">Novo Pedido</a>
+	</div>
+</div>

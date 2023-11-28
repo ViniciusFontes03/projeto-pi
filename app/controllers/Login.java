@@ -1,5 +1,6 @@
 package controllers;
 
+import models.Produto;
 import models.Usuario;
 import play.mvc.Controller;
 
@@ -10,12 +11,22 @@ public class Login extends Controller{
 	}
 	
 	public static void teste() {
+		
 		Usuario adm = new Usuario();
 		adm.email = "adm@adm.com";
 		adm.senha = "adm";
 		adm.nome = "adm";
-		
 		adm.save();
+		
+		Produto agua = new Produto();
+		agua.nome = "Garrafão de água 20L";
+		agua.preco = 7;
+		agua.save();
+		
+		Produto gas = new Produto();
+		gas.nome = "Botijão de gás 13kg";
+		gas.preco = 100;
+		gas.save();
 		
 		form();
 	}
@@ -29,7 +40,7 @@ public class Login extends Controller{
 			session.put("usuario.email", usu.email);
 			session.put("usuario.email", usu.senha);
 			
-			Produtos.form();
+			Pedidos.form();
 		}
 		
 		
