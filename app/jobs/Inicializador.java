@@ -10,7 +10,7 @@ public class Inicializador extends Job {
     
     @Override
     public void doJob() throws Exception {
-        if (Usuario.count == 0) {
+        if (Usuario.count() == 0) {
             Usuario adm = new Usuario();
 		    adm.email = "adm@adm.com";
 		    adm.senha = "adm";
