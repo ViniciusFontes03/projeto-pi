@@ -23,8 +23,6 @@ public class Login extends Controller{
 			
 			Pedidos.form();
 		}
-		
-		
 	}
 	
 	public static void sair() {
