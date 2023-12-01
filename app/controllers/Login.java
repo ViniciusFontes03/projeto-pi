@@ -5,7 +5,6 @@ import models.Usuario;
 import play.mvc.Controller;
 import play.mvc.With;
 
-@With(Seguranca.class)
 public class Login extends Controller{
 	
 	public static void form() {
@@ -19,7 +18,7 @@ public class Login extends Controller{
 			form();
 		} else {
 			session.put("usuario.email", usu.email);
-			session.put("usuario.email", usu.senha);
+			session.put("usuario.senha", usu.senha);
 			
 			Pedidos.form();
 		}

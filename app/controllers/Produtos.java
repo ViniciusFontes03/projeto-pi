@@ -5,7 +5,9 @@ import java.util.List;
 import models.Produto;
 import models.Usuario;
 import play.mvc.Controller;
+import play.mvc.With;
 
+@With(Seguranca.class)
 public class Produtos extends Controller{
     
     public static void form() {
