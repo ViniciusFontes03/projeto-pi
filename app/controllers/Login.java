@@ -1,9 +1,7 @@
 package controllers;
 
-import models.Produto;
 import models.Usuario;
 import play.mvc.Controller;
-import play.mvc.With;
 
 public class Login extends Controller{
 	

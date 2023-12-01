@@ -2,8 +2,8 @@ package controllers;
 
 import java.util.List;
 
+import models.Cliente;
 import models.Pedido;
-import models.Usuario;
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -14,7 +14,13 @@ public class Pedidos extends Controller{
         render();
     }
 
-    public static void cadastrar(Pedido p) {
+    public static void cadastrar(Pedido p, Long idCliente) {
+
+        if (idCliente != null) {
+            Cliente cli = Cliente.findById(idCliente);
+            p.pedidoCliente.add(cli);
+        }
+        
         p.save();
         listar();
     }
