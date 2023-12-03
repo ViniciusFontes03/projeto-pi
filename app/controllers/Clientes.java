@@ -13,4 +13,11 @@ public class Clientes extends Controller{
         cli.save();
         Produtos.listar();
     }
+    public static void editar(Long id) {
+		Cliente c = Cliente.findById(id);
+		flash.put("c.id", c.id);
+		flash.put("c.nome", c.nome);
+		flash.put("c.endereco", c.endereco);
+		form();	
+	}
 }
