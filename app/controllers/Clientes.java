@@ -7,7 +7,7 @@ import play.mvc.With;
 @With(Seguranca.class)
 public class Clientes extends Controller{
     public static void form(){
-        form();
+        render();
     }
     public static void cadastrar(Cliente cli) {
         cli.save();

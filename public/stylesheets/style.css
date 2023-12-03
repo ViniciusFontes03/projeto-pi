@@ -1,14 +1,11 @@
 body{
-    background: url('/public/images/bg-verde.jpg');
-  
+    background: url('/public/images/bg-verde.jpg') fixed ;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
     .sidebar{
     background-color: #8ebe0065;
     backdrop-filter: blur(10px);
-    
 }
   
 }
@@ -25,7 +22,6 @@ body{
     background-color: #444e476e;
     backdrop-filter: blur(10px);
     border-radius: 10px;
-  
     width: 80vh;
     height: 50vh;
     align-items: center;
@@ -39,10 +35,33 @@ body{
  
  }
 
- .pedidoListagemCard{
+ .cardListagem{
     padding: 30px;
     backdrop-filter: blur(10px);
     border-radius: 10px;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.192);
+    display: flex;
+ }
+
+ .barraDePesquisa{
+   padding: 30px;
+   backdrop-filter: blur(10px);
+   border-radius: 10px;
+   align-items: center;
+   background-color: rgba(0, 0, 0, 0.192);
+
+ }
+
+ .modalDetalhesPedido{
+   padding: 30px;
+   backdrop-filter: blur(10px);
+   border-radius: 10px;
+   align-items: center;
+   background-color: rgba(0, 0, 0, 0.192);
+
+ }
+ 
+ .direcao{
+   flex-direction: column;
  }

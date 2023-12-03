@@ -5,16 +5,35 @@ import java.util.List;
 
 import javax.persistence.Entity;
 
+import play.data.validation.Min;
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 @Entity
 public class Pedido extends Model {
+	
+	@Required
     public String nome;
+	
+	@Required
     public String endereco;
-    public int qntdAgua;
-    public double valorAgua;
-    public int qntdGas;
-    public double valorGas;
+	
+	@Required
+	@Min(0)
+    public Integer qntdAgua;
+	
+	@Min(0)
+	@Required
+    public Float valorAgua;
+	
+	@Min(0)
+	@Required
+    public Integer qntdGas;
+	
+	@Min(0)
+	@Required
+    public Float valorGas;
+	
     public Date data;
 
 }
