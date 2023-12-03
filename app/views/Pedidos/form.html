@@ -4,13 +4,11 @@
 #{extends 'main.html' /}
 #{set title:'Cadastro de Clientes'/}
 
-<div class="container p-3">
-	<h2>Cadastro de Pedidos</h2>
-</div>
+<br><br>
 
-<div class="container col-6 p-4 border border-success">
+<div class="container col-5 fs-6">
 	<form action="@{Pedidos.cadastrar}" method="POST">
-
+<div class="telaFormPedido text-white fs-6">
 		<div class="mb-3">
 			<label class="form-label">Nome:</label>
 			<input type="text" name="p.nome" class="form-control">
@@ -23,7 +21,7 @@
 
 		<div class="container col-8 d-flex">
 			<div class="m-3">
-				<label class="form-label">Quantidade de gás</label>
+				<label class="form-label">Gás:</label>
 				<input type="text" name="p.qntdGas" class="form-control">
 			</div>
 			<div class="m-3">
@@ -36,16 +34,22 @@
 		<div class="container col-8 d-flex">
 
 			<div class="m-3">
-				<label class="form-label">Quantidade de Água:</label>
+				<label class="form-label">Água:</label>
 				<input type="text" name="p.qntdAgua" class="form-control">
 			</div>
+      
 			<div class="m-3">
 				<label class="form-label">Valor unitario:</label>
 				<input type="text" name="p.valorAgua" class="form-control">
 			</div>
 
 		</div>
-
+  
+		<div class="mb-3">
+			<label class="form-label">Data:</label>
+			<input type="date" name="p.data" class="form-control">
+		</div>
+  
 		<div>
 			Clientes Fieis: 
 			#{list items:cliLista, as:'lc'}
@@ -53,10 +57,11 @@
 				<option value="${lc.id}">${lc.nome}</option>
 			</select>
 			#{/list}
-		</div>
-
+		</div>	
+    
 		<div class="container d-flex justify-content-center p-3">
 			<input class="btn btn-dark col-2 " type="submit" />
+		</div>
 		</div>
 	</form>
 </div>

@@ -4,20 +4,57 @@
     <head>
         <title>#{get 'title' /}</title>
         <meta charset="${_response_encoding}">
-        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/style.css'}">
         #{get 'moreStyles' /}
-        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/agua.png'}">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    </head>
-    <body>
+      </head>
+
+    <body class="vh-100 overflow-hidden">
+		<!----> 
         #{doLayout /}
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
+          <div class="container">
+            <a class="navbar-brand fs-4" href="#">Alguma coisa</a>
+            <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- barra lateral-->
+            <div class=" sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+              
+              <div class="offcanvas-header text-white border-bottom shadow-none" >
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+
+              <!-- Corpo da barra lateral-->
+              <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
+                <ul class="navbar-nav justify-content-center align-itens-center fs-5 flex-grow-1 pe-3">
+                  <li class="nav-item mx-2">
+                    <a class="nav-link active" aria-current="page" href="@{Pedidos.listar}">Listar Pedidos</a>
+                  </li>
+                  <li class="nav-item mx-2">
+                    <a class="nav-link active" aria-current="page" href="@{Pedidos.form}">Fazer Pedidos</a>
+                  </li>
+                  </li>
+                </ul>
+                <!-- Botão login / logout -->
+                <div class="d-flex justify-content-center align-itens-center gap-3">
+                #{if session['usuario.email']}
+                  <p class="text-white">${session['usuario.email']}  </p>        
+                        <a href="@{Login.sair}" class="text-white text-decoration-none px-3 py-1 rounded-4"
+                        style="background-color: #aee239">
+                          Logout</a>
+                      #{/if}
+                    </div>
+              </div>
+            </div>
+          </div>
+        </nav>
         
-        <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         #{get 'moreScripts' /}
-        #{if session['usuario.email']}
-        ${session['usuario.email']}
-		    	</span>
-		    	<a href="@{Login.sair}" class="ms-2 btn btn-outline-success">Logout</a>
-		  	#{/if}
+       
     </body>
 </html>
