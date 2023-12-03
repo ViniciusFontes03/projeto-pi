@@ -1,37 +1,106 @@
 #{extends 'main.html' /}
 #{set title: 'Lista'/}
 
+<!--
 <div class="container p-3 "> 
     <h2>Lista de Produtos</h2>
 </div>
-<div class="container col-8 p-4 border border-success">
 
-	<table class="table table-hover">
+<div class="container col-8 p-4 border border-success rounded">
+
+	<div>
+	<table class="table table-hover rounded ">
 		<thead>
 			<tr>
 				<th>ID</th>
 				<th>Nome</th>
+				<th>Endereço</th>
 				<th>Águas</th>
+				<th>Valor Agua</th>
 				<th>Gás</th>
-				<th>Preco</th>
+				<th>Valor Gás</th>
+				
 			</tr>
 		</thead>
 
 		<tbody>
 			#{list items:pedido, as:'ped'}
 			<tr>
-				
+				<th></th>
 				<th>${ped.nome}</th>
 				<td>${ped.endereco}</td>
 				<td>${ped.qntdAgua}</td>
 				<td>${ped.valorAgua}</td>
 				<td>${ped.qntdGas}</td>
 				<td>${ped.valorGas}</td>
+				
 			</tr>
 			#{/list}
+		
+			
 		</tbody>
 	</table>
+	<h3>Total de pedidos: ${totalPedidos}</h3>
+</div>
+-->
+<br><br><br><br>
+<div class="container ">
+	#{list items:pedido, as:'ped'}
+	<div class="row">
+		<div class="ol-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex align-itens-stretch">
+			<div class="card text-center bg-transparent pedidoListagemCard text-white">
+				<div class="card-header">
+					<h5 class="card-title">${ped.nome}</h5>
+					<h6 class="card-subtitle">${ped.data} </h6>
+				</div>
+				<div class="cadr-body">
+					<p class="card-text">Gás: ${ped.qntdGas}</p>
+   					<p class="card-text">Água: ${ped.qntdAgua}</p>
+    				<p class="card-text">Valor total: ${ped.valorAgua*ped.qntdAgua+ped.valorGas*ped.qntdGas}</p>
+				</div>
+				<div class="card-footer">
+					<div class="d-block">
+						<a href="@{Pedidos.form}" class=" btn btn-dark">Detalhes</a>
+						</div>
+				</div>
+
+			</div>
+		</div>
+#{/list}
+	</div>
+	
+</div>
+	<!--
+	#{list items:pedido, as:'ped'}
+	
+	<table class="table table-hover rounded">
+		<header>
+			${ped.data}
+		</header>
+		<tbody>
+		<div class="container d-inline">
+	<div class="card" style="width: 20rem;">
+  <div class="card-body">
+    <h5 class="card-title">${ped.nome}</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">${ped.endereco}</h6>
+    <p class="card-text">Gás: ${ped.qntdGas}</p>
+    <p class="card-text">Água: ${ped.qntdAgua}</p>
+    <p class="card-text">Valor total: ${ped.valorAgua*ped.qntdAgua+ped.valorGas*ped.qntdGas}</p>
+    <div class="d-flex justify-content-center">
+    <a href="@{Pedidos.form}" class=" col-2 btn btn-dark">Detalhes</a>
+    </div>
+    </tbody>
+    </table>
+    
+  
+</div>
+  	#{/list}
+
+
+
+
 	<div class="container p-3 d-flex justify-content-center ">	
 	    <a href="@{Pedidos.form}" class=" col-2 btn btn-dark">Novo Pedido</a>
 	</div>
 </div>
+-->

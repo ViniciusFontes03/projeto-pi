@@ -26,8 +26,9 @@ public class Pedidos extends Controller{
     }
     
     public static void listar() {
-    	List<Pedido> pedido = Pedido.findAll();
-    	render(pedido);
+     List<Pedido> pedido = Pedido.findAll();
+     long totalPedidos = Pedido.count();
+    	render(pedido,totalPedidos);
     }
 
     

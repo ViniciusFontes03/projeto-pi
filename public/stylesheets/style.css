@@ -1,0 +1,48 @@
+body{
+    background: url('/public/images/bg-verde.jpg');
+  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .sidebar{
+    background-color: #8ebe0065;
+    backdrop-filter: blur(10px);
+    
+}
+  
+}
+
+.cor1{
+    color:#aee239;
+ }  
+ .cor2{
+    color: #40c0cb;
+ }
+
+ .telaLogin{
+   
+    background-color: #444e476e;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+  
+    width: 80vh;
+    height: 50vh;
+    align-items: center;
+ }
+
+ .telaFormPedido{
+    padding: 50px;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    align-items: center;
+ 
+ }
+
+ .pedidoListagemCard{
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.192);
+ }
