@@ -2,66 +2,66 @@
 #{set title:'Cadastro de Produtos'/}
 
 #{extends 'main.html' /}
-#{set title:'Cadastro de Clientes'/}
+#{set title:'Pedidos'/}
 
 <br><br>
 
 <div class="container col-5 fs-6">
 	<form action="@{Pedidos.cadastrar}" method="POST">
-<div class="telaFormPedido text-white fs-6">
-		<div class="mb-3">
-			<label class="form-label">Nome:</label>
-			<input type="text" name="p.nome" class="form-control">
-		</div>
-
-		<div class="mb-3">
-			<label class="form-label">Endereço</label>
-			<input type="text" name="p.endereco" class="form-control">
-		</div>
-
-		<div class="container col-8 d-flex">
-			<div class="m-3">
-				<label class="form-label">Gás:</label>
-				<input type="text" name="p.qntdGas" class="form-control">
-			</div>
-			<div class="m-3">
-				<label class="form-label">Valor unitario:</label>
-				<input type="text" name="p.valorGas" class="form-control">
+		<div class="telaFormPedido text-white fs-6">
+			<div class="mb-3">
+				<label class="form-label">Nome:</label>
+				<input type="text" name="p.nome" class="form-control">
 			</div>
 
-		</div>
-
-		<div class="container col-8 d-flex">
-
-			<div class="m-3">
-				<label class="form-label">Água:</label>
-				<input type="text" name="p.qntdAgua" class="form-control">
-			</div>
-      
-			<div class="m-3">
-				<label class="form-label">Valor unitario:</label>
-				<input type="text" name="p.valorAgua" class="form-control">
+			<div class="mb-3">
+				<label class="form-label">Endereço</label>
+				<input type="text" name="p.endereco" class="form-control">
 			</div>
 
-		</div>
-  
-		<div class="mb-3">
-			<label class="form-label">Data:</label>
-			<input type="date" name="p.data" class="form-control">
-		</div>
-  
-		<div>
-			Clientes Fieis: 
-			#{list items:cliLista, as:'lc'}
-			<select class="form-select" aria-label="Default select example">
-				<option value="${lc.id}">${lc.nome}</option>
-			</select>
-			#{/list}
-		</div>	
-    
-		<div class="container d-flex justify-content-center p-3">
-			<input class="btn btn-dark col-2 " type="submit" />
-		</div>
+			<div class="container col-8 d-flex">
+				<div class="m-3">
+					<label class="form-label">Gás:</label>
+					<input type="text" name="p.qntdGas" class="form-control">
+				</div>
+				<div class="m-3">
+					<label class="form-label">Valor unitario:</label>
+					<input type="text" name="p.valorGas" class="form-control">
+				</div>
+
+			</div>
+
+			<div class="container col-8 d-flex">
+
+				<div class="m-3">
+					<label class="form-label">Água:</label>
+					<input type="text" name="p.qntdAgua" class="form-control">
+				</div>
+
+				<div class="m-3">
+					<label class="form-label">Valor unitario:</label>
+					<input type="text" name="p.valorAgua" class="form-control">
+				</div>
+
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">Data:</label>
+				<input type="date" name="p.data" class="form-control">
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">Clientes Fieis: </label>
+				<select name="idCliente" class="form-select" aria-label="Default select example">
+					#{list items:cliLista, as:'lc'}
+					<option value="${lc.id}">${lc.nome}</option>
+					#{/list}
+				</select>
+			</div>
+
+			<div class="container d-flex justify-content-center p-3">
+				<input class="btn btn-dark col-2 " type="submit" />
+			</div>
 		</div>
 	</form>
 </div>

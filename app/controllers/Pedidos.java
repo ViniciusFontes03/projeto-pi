@@ -19,7 +19,7 @@ public class Pedidos extends Controller{
 
         if (idCliente != null) {
             Cliente cli = Cliente.findById(idCliente);
-            p.pedidoCliente.add(cli);
+            cli.pedidoCliente.add(cli);
         }
         
         p.save();
@@ -27,8 +27,8 @@ public class Pedidos extends Controller{
     }
     
     public static void listar() {
-     List<Pedido> pedido = Pedido.findAll();
-     long totalPedidos = Pedido.count();
+        List<Pedido> pedido = Pedido.findAll();
+        long totalPedidos = Pedido.count();
     	render(pedido,totalPedidos);
     }
 
