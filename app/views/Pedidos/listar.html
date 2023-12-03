@@ -55,22 +55,22 @@
 				</div>
 				<div class="cadr-body">
 					<p class="card-text">Gás: ${ped.qntdGas}</p>
-   					<p class="card-text">Água: ${ped.qntdAgua}</p>
-    				<p class="card-text">Valor total: ${ped.valorAgua*ped.qntdAgua+ped.valorGas*ped.qntdGas}</p>
+					<p class="card-text">Água: ${ped.qntdAgua}</p>
+					<p class="card-text">Valor total: ${ped.valorAgua*ped.qntdAgua+ped.valorGas*ped.qntdGas}</p>
 				</div>
 				<div class="card-footer">
 					<div class="d-block">
 						<a href="@{Pedidos.form}" class=" btn btn-dark">Detalhes</a>
-						</div>
+					</div>
 				</div>
 
 			</div>
 		</div>
-#{/list}
+		#{/list}
 	</div>
-	
+
 </div>
-	<!--
+<!--
 	#{list items:pedido, as:'ped'}
 	
 	<table class="table table-hover rounded">
