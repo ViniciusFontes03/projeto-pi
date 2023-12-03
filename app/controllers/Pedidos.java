@@ -11,7 +11,8 @@ import play.mvc.With;
 public class Pedidos extends Controller{
     
     public static void form() {
-        render();
+    	List <Cliente> cliLista = Cliente.findAll();
+        render(cliLista);
     }
 
     public static void cadastrar(Pedido p, Long idCliente) {
