@@ -27,7 +27,6 @@ public class Clientes extends Controller{
         }
         
     public static void editar(long id) {
-
         Cliente cli = Cliente.findById(id);
 		renderTemplate("Clientes/form.html", cli);
         

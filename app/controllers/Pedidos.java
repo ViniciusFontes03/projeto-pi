@@ -24,7 +24,7 @@ public class Pedidos extends Controller{
 
          if (idCliente != null) {
             Cliente cli = Cliente.findById(idCliente);
-            cli.pedidoCliente.add(cli);
+            cli.pedidoCliente.add(p);
         }
 
     	if (validation.hasErrors()) {
