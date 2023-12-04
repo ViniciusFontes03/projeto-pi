@@ -14,37 +14,39 @@ import play.mvc.With;
 public class Pedidos extends Controller{
     
     public static void form() {
-    	List <Cliente> cliLista = Cliente.findAll();
+    	List<Cliente> cliLista = Cliente.findAll();
     	Pedido p = (Pedido) Cache.get("p");
         render(cliLista);
     }
 
     public static void cadastrar(@Valid Pedido p, Long idCliente) {
-
+    	
     	if (validation.hasErrors()) {
     		validation.keep();
     		Cache.set("p", p);
     		form();
     	}
     	
-        if (idCliente != null) {
-            Cliente cli = Cliente.findById(idCliente);
-            cli.pedidoCliente.add(cli);
-        }
-        
+    	if(idCliente != null) {
+    		Cliente c = Cliente.findById(idCliente);
+    		c.pedidoCliente.add(p);
+    	} 
+    	
         p.save();
         listar();
     }
     
     public static void listar() {
-        List<Pedido> pedido = Pedido.findAll();
-        long totalPedidos = Pedido.count();
-    	render(pedido,totalPedidos);
+        
+	    List<Pedido> pedido = Pedido.findAll();
+	    long totalPedidos = Pedido.count();
+	    render(pedido,totalPedidos);
+        
     }
-
     public static void editar(long id) {
         Pedido p = Pedido.findById(id);
-        renderTemplate("Pedidos/form.html", p);
+        List<Cliente> cliLista = Cliente.findAll();
+        renderTemplate("Pedidos/form.html", p, cliLista);
         
     }
 
@@ -53,5 +55,5 @@ public class Pedidos extends Controller{
         p.delete();
         listar();
     
-}
+    }
 }

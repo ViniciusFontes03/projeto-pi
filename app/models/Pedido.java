@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import play.data.validation.Min;
 import play.data.validation.Required;
@@ -36,4 +38,7 @@ public class Pedido extends Model {
 	
     public Date data;
 
+    @ManyToOne
+    @JoinColumn(name = "idCliente")
+    public Cliente cliente;
 }
