@@ -19,7 +19,6 @@ public class Clientes extends Controller{
     public static void form(){
         render();
     }
-<<<<<<< HEAD
     public static void cadastrar(@Valid Cliente cli) {
         
         if (validation.hasErrors()) {
@@ -33,11 +32,6 @@ public class Clientes extends Controller{
         Pedidos.listar();
         }
         
-=======
-    public static void cadastrar(Cliente cli) {
-        cli.save();
-        Clientes.listar();
->>>>>>> 0162845c8145e91381f4a33b7003f0f8b18cf0e9
     }
     public static void editar(Long id) {
         Cliente cli = Cliente.findById(id);
