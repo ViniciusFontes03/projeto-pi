@@ -23,13 +23,12 @@ public class Clientes extends Controller{
     	} else{
             flash.success("Pedido registrado!!");
             cli.save();
-        Pedidos.listar();
+            Clientes.listar();
         }
-        
-    public static void editar(long id) {
+    }   
+    public static void editar(Long id) {
         Cliente cli = Cliente.findById(id);
 		renderTemplate("Clientes/form.html", cli);
-        
     }
 
     public static void listar() {
@@ -42,5 +41,5 @@ public class Clientes extends Controller{
 		cli.delete();
 		listar();
     }
-}
+
 }
