@@ -3,7 +3,6 @@ package models;
 import java.util.List;
 
 import javax.persistence.Entity;
-
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
@@ -16,8 +15,9 @@ public class Cliente extends Model{
     public String nome;
     @Required
     public String endereco;
-
+    
+    
     @OneToMany
     @JoinColumn(name = "idCliente")
-    public List<Cliente> pedidoCliente;
+    public List<Pedido> pedidoCliente;
 }

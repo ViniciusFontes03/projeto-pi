@@ -1,9 +1,16 @@
 package controllers;
 
+<<<<<<< HEAD
 import javax.validation.Valid;
 
 import models.Cliente;
 import play.cache.Cache;
+=======
+import java.util.List;
+
+import models.Cliente;
+import models.Produto;
+>>>>>>> 0162845c8145e91381f4a33b7003f0f8b18cf0e9
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -12,6 +19,7 @@ public class Clientes extends Controller{
     public static void form(){
         render();
     }
+<<<<<<< HEAD
     public static void cadastrar(@Valid Cliente cli) {
         
         if (validation.hasErrors()) {
@@ -25,12 +33,24 @@ public class Clientes extends Controller{
         Pedidos.listar();
         }
         
+=======
+    public static void cadastrar(Cliente cli) {
+        cli.save();
+        Clientes.listar();
+>>>>>>> 0162845c8145e91381f4a33b7003f0f8b18cf0e9
     }
     public static void editar(Long id) {
-		Cliente c = Cliente.findById(id);
-		flash.put("c.id", c.id);
-		flash.put("c.nome", c.nome);
-		flash.put("c.endereco", c.endereco);
-		form();	
-	}
+        Cliente cli = Cliente.findById(id);
+		renderTemplate("Clientes/form.html", cli);
+    }
+
+    public static void listar() {
+        List<Cliente> listaDeClientes = Cliente.findAll();
+        render(listaDeClientes);
+    }
+    public static void deletar(Long id) {
+        Cliente cli = Cliente.findById(id);
+		cli.delete();
+		listar();
+    }
 }
