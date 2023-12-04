@@ -1,9 +1,10 @@
 package controllers;
-
-import javax.validation.Valid;
-import java.util.List;
+import play.data.validation.*;
 import models.Cliente;
 import play.cache.Cache;
+import java.util.List;
+import models.Cliente;
+import models.Produto;
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -25,13 +26,14 @@ public class Clientes extends Controller{
         Pedidos.listar();
         }
         
-    }
-    public static void editar(Long id) {
+    public static void editar(long id) {
         Cliente cli = Cliente.findById(id);
 		renderTemplate("Clientes/form.html", cli);
+        
     }
 
     public static void listar() {
+        
         List<Cliente> listaDeClientes = Cliente.findAll();
         render(listaDeClientes);
     }
@@ -40,4 +42,5 @@ public class Clientes extends Controller{
 		cli.delete();
 		listar();
     }
+}
 }
