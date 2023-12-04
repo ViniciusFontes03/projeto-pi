@@ -38,42 +38,40 @@
 
 		<div class="mb-3">
 			<label class="form-label">Endereço</label>
-			<input type="text" name="p.endereco" class="form-control" value="${p?.endereco}">
+			<input type="text" name="p.endereco" class="form-control">
 		</div>
 
 		<div class="container col-8 d-flex">
-			<div class="m-2">
+			<div class="m-3">
 				<label class="form-label">Gás:</label>
-				<input type="text" name="p.qntdGas" class="form-control" value="${p?.qntdGas}">
+				<input type="text" name="p.qntdGas" class="form-control">
 			</div>
-			<div class="m-2">
+			<div class="m-3">
 				<label class="form-label">Valor unitario:</label>
-				<input type="text" name="p.valorGas" class="form-control" value="${p?.valorGas}">
+				<input type="text" name="p.valorGas" class="form-control">
 			</div>
 
-		</div>
+			</div>
 
-		<div class="container col-8 d-flex">
+			<div class="container col-8 d-flex">
 
-			<div class="m-2">
+			<div class="m-3">
 				<label class="form-label">Água:</label>
-				<input type="text" name="p.qntdAgua" class="form-control" value="${p?.qntdAgua}">
+				<input type="text" name="p.qntdAgua" class="form-control">
 			</div>
       
-			<div class="m-2">
+			<div class="m-3">
 				<label class="form-label">Valor unitario:</label>
-				<input type="text" name="p.valorAgua" class="form-control" value="${p?.valorAgua}">
-				
+				<input type="text" name="p.valorAgua" class="form-control">
 			</div>
 
 		</div>
   
 		<div class="mb-3">
 			<label class="form-label">Data:</label>
-			<input type="date" name="p.data" class="form-control" value="${p?.data}">
+			<input type="date" name="p.data" class="form-control">
 		</div>
-
-		<!--
+  
 		<div>
 			Clientes Fieis: 
 			#{list items:cliLista, as:'lc'}
@@ -82,12 +80,11 @@
 			</select>
 			#{/list}
 		</div>	
-		-->
-
-		#{if p}
+    
 		<div class="container d-flex justify-content-center p-3">
-			<input class="btn btn-dark p-2 " type="submit" value="Atualizar" />
+			<input class="btn btn-dark col-2 " type="submit" />
 		</div>
+<<<<<<< HEAD
 	#{/if}
 	#{else}
 			<div class="container d-flex justify-content-center p-3">
@@ -95,6 +92,8 @@
 		</div>
 	#{/else}
 	
+=======
+>>>>>>> b7d7be8afcc28f622f22a3da0ecf7176610b6229
 		</div>
 	</form>
 
