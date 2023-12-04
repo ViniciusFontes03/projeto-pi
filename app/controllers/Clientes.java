@@ -1,16 +1,9 @@
 package controllers;
 
-<<<<<<< HEAD
 import javax.validation.Valid;
-
+import java.util.List;
 import models.Cliente;
 import play.cache.Cache;
-=======
-import java.util.List;
-
-import models.Cliente;
-import models.Produto;
->>>>>>> 0162845c8145e91381f4a33b7003f0f8b18cf0e9
 import play.mvc.Controller;
 import play.mvc.With;
 
