@@ -1,0 +1,38 @@
+#{extends 'main.html' /}
+#{set title: 'Lista'/}
+
+<div class="container p-3 "> 
+    <h2>Lista de Clientes</h2>
+</div>
+<div class="container col-8  p-4">
+
+	<table class="table table-hover ">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Endereço</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			#{list items:listaDeClientes, as:'lc'}
+			<tr>
+				
+				<th>${lc.id}</th>
+				<td>${lc.nome}</td>
+				<td>${lc.endereco}</td>
+
+				<td>
+					<a class="btn btn-outline-dark" type="submit"  href="@{Clientes.editar(lc.id)}">Editar</a>
+					<a class="btn btn-outline-dark" type="submit"  href="@{Clientes.deletar(lc.id)}">Remover</a>
+				</td>
+				
+			</tr>
+			#{/list}
+		</tbody>
+	</table>
+	<div class="container p-3 d-flex justify-content-center ">	
+	    <a href="@{Clientes.form}" class=" col-2 btn btn-dark">Cadastrar novo cliente</a>
+	</div>
+</div>

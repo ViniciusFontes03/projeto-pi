@@ -72,15 +72,19 @@
 			<input type="date" name="p.data" class="form-control">
 		</div>
   
-		<div>
-			Clientes Fieis: 
-			#{list items:cliLista, as:'lc'}
-			<select class="form-select" aria-label="Default select example">
+  		#{if cliLista?.id}
+  		
+		<div class="mb-3">
+			<label class="form-label">Clientes Fieis: </label>
+			<select name="p.cliente.id" class="form-select" aria-label="Default select example">
+				<option selected></option>
+				#{list items:cliLista, as:'lc'}
 				<option value="${lc.id}">${lc.nome}</option>
+				#{/list}
 			</select>
-			#{/list}
 		</div>	
-    
+		
+    	#{/if}
 		<div class="container d-flex justify-content-center p-3">
 			<input class="btn btn-dark col-2 " type="submit" />
 		</div>

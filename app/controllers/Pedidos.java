@@ -58,10 +58,10 @@ public class Pedidos extends Controller{
         long totalPedidos = Pedido.count();
     	render(listaPed,totalPedidos);
     }
-
     public static void editar(long id) {
         Pedido p = Pedido.findById(id);
-        renderTemplate("Pedidos/form.html", p);
+        List<Cliente> cliLista = Cliente.findAll();
+        renderTemplate("Pedidos/form.html", p, cliLista);
         
     }
 
@@ -71,5 +71,5 @@ public class Pedidos extends Controller{
         flash.success("Removido com sucesso!!");
         listar();
     
-}
+    }
 }

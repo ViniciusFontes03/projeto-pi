@@ -1,6 +1,9 @@
 package controllers;
 
+import java.util.List;
+
 import models.Cliente;
+import models.Produto;
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -11,13 +14,20 @@ public class Clientes extends Controller{
     }
     public static void cadastrar(Cliente cli) {
         cli.save();
-        Produtos.listar();
+        Clientes.listar();
     }
     public static void editar(Long id) {
-		Cliente c = Cliente.findById(id);
-		flash.put("c.id", c.id);
-		flash.put("c.nome", c.nome);
-		flash.put("c.endereco", c.endereco);
-		form();	
-	}
+        Cliente cli = Cliente.findById(id);
+		renderTemplate("Clientes/form.html", cli);
+    }
+
+    public static void listar() {
+        List<Cliente> listaDeClientes = Cliente.findAll();
+        render(listaDeClientes);
+    }
+    public static void deletar(Long id) {
+        Cliente cli = Cliente.findById(id);
+		cli.delete();
+		listar();
+    }
 }
