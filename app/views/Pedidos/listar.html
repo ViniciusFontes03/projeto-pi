@@ -1,17 +1,12 @@
 #{extends 'main.html' /}
 #{set title: 'Lista'/}
 
-<br><br>
+<br><br><br><br><br><br>	
 
-<form class="d-flex barraDePesquisa m-3" role="search">
-			<input class="form-control me-2 p-2" type="search">
-			<button class="btn btn-outline-light" type="submit">Buscar</button>
-		  </form>
-
-<div class="container d-flex flex-row">	
+<div class="container d-flex mt-4 flex-row">	
 	
-	#{list items:pedido, as:'ped'}
-	<div class="container m-4 ">
+	#{list items:listaPed, as:'ped'}
+	<div class="container col-auto m-4 ">
 	<div class="row m-3" >
 		<div class="cardListagem justify-content-center ">
 			<div class="card text-center bg-transparent text-white border-0">
@@ -54,20 +49,19 @@
 		</div>
 		</div>
 	</div>
-	<div class="modal fade modalDetalhesPedido" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
+	<div class="modal text-white fade modalDetalhesPedido" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content" style="background-color: rgba(59, 59, 59, 0.562);">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="staticBackdropLabel">${ped.nome}</h1>
         <h6 class="modal-subtitle">${ped.data.format('dd-MM-yyyy')} </h6>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+        <p>${ped.endereco}</p>
+		<p>Quantidade de Garrafões de água: ${ped.qntdAgua}  ${ped.valorAgua} </p>
+		<p>${ped.qntdGas} - ${ped.valorGas}</p>
+
       </div>
     </div>
   </div>
@@ -77,39 +71,6 @@
 
 
 </div>
-	<div class="container p-3 d-flex justify-content-center ">	
-	    <a href="@{Pedidos.form}" class=" col-2 btn btn-dark">Novo Pedido</a>
-	</div>
-
-
-<!--
-	#{list items:pedido, as:'ped'}
 	
-	<table class="table table-hover rounded">
-		<header>
-			${ped.data}
-		</header>
-		<tbody>
-		<div class="container d-inline">
-	<div class="card" style="width: 20rem;">
-  <div class="card-body">
-    <h5 class="card-title">${ped.nome}</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">${ped.endereco}</h6>
-    <p class="card-text">Gás: ${ped.qntdGas}</p>
-    <p class="card-text">Água: ${ped.qntdAgua}</p>
-    <p class="card-text">Valor total: ${ped.valorAgua*ped.qntdAgua+ped.valorGas*ped.qntdGas}</p>
-    <div class="d-flex justify-content-center">
-    <a href="@{Pedidos.form}" class=" col-2 btn btn-dark">Detalhes</a>
-    </div>
-    </tbody>
-    </table>
-    
-  
-</div>
-  	#{/list}
 
 
-
-
-</div>
--->

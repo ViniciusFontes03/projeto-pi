@@ -30,7 +30,7 @@
               </div>
 
               <!-- Corpo da barra lateral-->
-              <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
+              <div id="offcanvasNavbar" class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
                 <ul class="navbar-nav justify-content-center align-itens-center fs-5 flex-grow-1 pe-3">
                   <li class="nav-item mx-2">
                     <a class="nav-link active" aria-current="page" href="@{Pedidos.listar}">Listar Pedidos</a>
@@ -41,11 +41,19 @@
                   <li class="nav-item mx-2">
                     <a class="nav-link active" aria-current="page" href="@{Clientes.form}">Cadastrar Cliente</a>
                   </li>
+                  <li class="nav-item mx-2">
+                    
+                    <form  action="@{Pedidos.listar}" class="d-flex barraDePesquisa " role="search">
+                          <input  class="form-control me-2" placeholder="Busque por pedidos..." name="filtro" type="search">
+                          <button class="btn btn-outline-light " type="submit">Buscar</button>
+                          </form>
+                  </li>
                 </ul>
+                
                 <!-- Botão login / logout -->
-                <div class="d-flex justify-content-center align-itens-center gap-3">
+                <div class="d-flex justify-content-center gap-3">
                 #{if session['usuario.email']}
-                  <p class="text-white">${session['usuario.email']}  </p>        
+                  <p class=" my-1 text-white">${session['usuario.email']}  </p>        
                         <a href="@{Login.sair}" class="text-white text-decoration-none px-3 py-1 rounded-4"
                         style="background-color: #aee239">
                           Logout</a>
@@ -55,7 +63,7 @@
             </div>
           </div>
         </nav>
-   
+        
         <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
         #{get 'moreScripts' /}

@@ -13,6 +13,7 @@ public class Login extends Controller{
 		Usuario usu = Usuario.find("email = ?1 and senha = ?2", email, senha).first();
 		
 		if (usu == null) {
+			flash.error("Insira credenciais válidas!!");
 			form();
 		} else {
 			session.put("usuario.email", usu.email);

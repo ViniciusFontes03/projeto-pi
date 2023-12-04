@@ -15,31 +15,48 @@ public class Pedidos extends Controller{
     
     public static void form() {
     	List <Cliente> cliLista = Cliente.findAll();
-    	Pedido p = (Pedido) Cache.get("p");
+    	Pedido p = (Pedido) Cache.get("p"); 
+        Cache.clear();
         render(cliLista);
     }
 
     public static void cadastrar(@Valid Pedido p, Long idCliente) {
 
-    	if (validation.hasErrors()) {
-    		validation.keep();
-    		Cache.set("p", p);
-    		form();
-    	}
-    	
-        if (idCliente != null) {
+         if (idCliente != null) {
             Cliente cli = Cliente.findById(idCliente);
             cli.pedidoCliente.add(cli);
         }
+
+    	if (validation.hasErrors()) {
+    		validation.keep();
+            flash.error("Campos obrigatorios!");
+    		Cache.set("p", p);
+    		form();
+    	} else{
+            flash.success("Pedido registrado!!");
+                p.save();
+                 listar();
+        }
+       
         
-        p.save();
-        listar();
+       
     }
     
+    
     public static void listar() {
-        List<Pedido> pedido = Pedido.findAll();
+        
+        String filtro = params.get("filtro");
+
+    List<Pedido> listaPed;
+        if (filtro == null || filtro.isEmpty()) {
+            listaPed = Pedido.findAll();
+        } else{
+            listaPed = Pedido.find("nome like ?1 or endereco like ?1 ", 
+            "%"+ filtro +"%").fetch();
+        }
+
         long totalPedidos = Pedido.count();
-    	render(pedido,totalPedidos);
+    	render(listaPed,totalPedidos);
     }
 
     public static void editar(long id) {
@@ -51,6 +68,7 @@ public class Pedidos extends Controller{
     public static void delete(long id){
         Pedido p = Pedido.findById(id);
         p.delete();
+        flash.success("Removido com sucesso!!");
         listar();
     
 }

@@ -14,7 +14,7 @@ body{
     color:#aee239;
  }  
  .cor2{
-    color: #40c0cb;
+    color: #cb8a40;
  }
 
  .telaLogin{
@@ -45,8 +45,6 @@ body{
  }
 
  .barraDePesquisa{
-   padding: 30px;
-   backdrop-filter: blur(10px);
    border-radius: 10px;
    align-items: center;
    background-color: rgba(0, 0, 0, 0.192);
@@ -65,3 +63,4 @@ body{
  .direcao{
    flex-direction: column;
  }
+
