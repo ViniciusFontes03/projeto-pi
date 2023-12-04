@@ -38,8 +38,6 @@ public class Pedidos extends Controller{
                  listar();
         }
        
-        
-       
     }
     
     

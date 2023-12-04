@@ -1,25 +1,44 @@
 #{extends 'main.html' /}
 #{set title:'Cadastro de Clientes'/}
 
-<div class="container p-3"> 
+<div class="telaFormPedido text-white">
+#{if flash.error}
+	<br>
+	<div class="alert d-flex justify-content-center mt-2" role="alert">
+						
+						<div class="rounded-3 align-items-center d-flex flex-row  " style="background-color: rgb(245, 110, 0);" >
+							<div class="p-3 d-flex">
+							<a class="bi flex-shrink-0 me-2" role="img" aria-label="Warning:">
+								<img src="/public/images/triste.png"/></a>
+							<h5  style="color:#ffffff; font-size: 1.5em;">${flash.error}</h5>
+						</div>
+						</div>
+					  </div>
+	#{/if}
+<br>
+<div class=" justify-content-center d-flex  p-3"> 
 	<h2>Cadastro de Clientes</h2>
 </div>
 
 <div  class="container col-4 p-4">
-	<form action="@{Clientes.cadastrar}" method="POST">
-		
+
+	<form action="@{Clientes.cadastrar}"  method="POST">
+		<input type="hidden" name="cli.id" value="${cli?.id}">
 		<div class="mb-3">
 			<label class="form-label">Nome:</label>
 			<input type="text" name="cli.nome" class="form-control">
 		</div>
 		
 		<div class="mb-3">
-			<label class="form-label">Endereço</label>
+			<label class="form-label">Endereço:</label>
 			<input type="text" name="cli.endereco" class="form-control">
 		</div>
 		
-		<div class="container d-flex justify-content-center p-3">	
-			<input class="btn btn-dark col-2 " type="submit" />
+		<div class="container d-flex justify-content-center p-2">	
+			<div class="container d-flex justify-content-center p-3">
+				<input class="btn btn-dark p-2 " type="submit" value="Cadastrar" />
+			</div>
 		</div>
 	</form>
+</div>
 </div>

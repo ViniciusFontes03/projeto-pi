@@ -2,7 +2,9 @@
 #{set title: 'Lista'/}
 
 <br><br><br><br><br><br>	
-
+<div style="background-color: rgba(0, 0, 0, 0.096);" class="  text-white container justify-content-center d-flex">
+	<h2>Total de Pedidos: ${totalPedidos}</h2>
+	</div>
 <div class="container d-flex mt-4 flex-row">	
 	
 	#{list items:listaPed, as:'ped'}
@@ -58,9 +60,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>${ped.endereco}</p>
-		<p>Quantidade de Garrafões de água: ${ped.qntdAgua}  ${ped.valorAgua} </p>
-		<p>${ped.qntdGas} - ${ped.valorGas}</p>
+        <h5>${ped.endereco}</h5>
+		<p>Quantidade de Garrafões de água: ${ped.qntdAgua} </p>
+			<p>Valor: ${ped.valorAgua} </p>
+		<p>Quantidade de Garrafões de água: ${ped.qntdGas} </p>
+		<p> Valor ${ped.valorGas}</p>
 
       </div>
     </div>
