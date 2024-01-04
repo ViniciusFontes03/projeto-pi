@@ -35,7 +35,8 @@ public class Pedido extends Model {
 	@Min(0)
 	@Required
     public Float valorGas;
-	
+    
+
     public Date data;
 
     @ManyToOne

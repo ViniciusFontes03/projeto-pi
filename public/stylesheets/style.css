@@ -10,12 +10,6 @@ body{
   
 }
 
-.cor1{
-    color:#aee239;
- }  
- .cor2{
-    color: #cb8a40;
- }
 
  .telaLogin{
    
@@ -64,3 +58,10 @@ body{
    flex-direction: column;
  }
 
+.campoErro{
+   background-color: rgb(245, 110, 0);
+}
+
+.bgVerde{
+   background-color: #aee239;
+}
