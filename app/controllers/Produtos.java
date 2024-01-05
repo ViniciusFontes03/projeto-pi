@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.Produto;
+import models.Produto;
 import models.Usuario;
 import play.mvc.Controller;
 import play.mvc.With;
@@ -14,10 +15,6 @@ public class Produtos extends Controller{
         render();
     }
 
-    public static void cadastrar(Produto prod) {
-        prod.save();
-        listar();
-    }
 
     public static void listar() {
         List<Produto> pdt = Produto.findAll();

@@ -1,6 +1,7 @@
 package jobs;
 
 import models.Produto;
+import models.Produto;
 import models.Usuario;
 import play.jobs.Job;
 import play.jobs.OnApplicationStart;
@@ -21,13 +22,15 @@ public class Inicializador extends Job {
             Produto agua = new Produto();
 		    agua.nome = "Garrafão de água 20L";
 		    agua.preco = 7;
-		
+			agua.estoqueAgua = 200;
+
 		    agua.save();
 		
 		    Produto gas = new Produto();
 		    gas.nome = "Botijão de gás 13kg";
 		    gas.preco = 100;
-			
+			gas.estoqueGas = 100;
+
 		    gas.save();
         }
     }

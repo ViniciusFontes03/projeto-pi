@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import models.Cliente;
+import models.Produto;
 import models.Pedido;
 import play.cache.Cache;
 import play.data.validation.Valid;
@@ -22,7 +23,18 @@ public class Pedidos extends Controller{
 
     public static void cadastrar(@Valid Pedido p, Long idCliente) {
 
-         if (idCliente != null) {
+    
+
+       Long idAgua = (long) 2;
+       Long idGas = (long) 3;
+       int qntdAguaPedido = p.qntdAgua;
+       int qntdGasPedido = p.qntdGas;
+
+       Produto estoqueAgua = Produto.findById(idAgua);
+       Produto estoqueGas = Produto.findById(idGas);
+
+
+         if(idCliente != null) {
             Cliente cli = Cliente.findById(idCliente);
             cli.pedidoCliente.add(p);
         }
@@ -32,10 +44,32 @@ public class Pedidos extends Controller{
             flash.error("Campos obrigatorios!");
     		Cache.set("p", p);
     		form();
-    	} else{
-            flash.success("Pedido registrado!!");
-                p.save();
+    	} 
+        else{
+                if (qntdAguaPedido > estoqueAgua.estoqueAgua)  {
+                flash.error("Estoque de água insuficiente!");
+                
+                form();
+
+         }  else if(qntdGasPedido > estoqueGas.estoqueGas){
+            flash.error("Estoque de gás insuficiente!");
+            
+                form();
+
+         }
+         else {
+                flash.success("Pedido registrado!!");
+                estoqueAgua.estoqueAgua -= qntdAguaPedido;
+                estoqueGas.estoqueGas -= qntdGasPedido;
+
+                estoqueAgua.save();
+                 estoqueGas.save();
+                 p.save();
+            
                  listar();
+      }
+            
+            
         }
        
     }

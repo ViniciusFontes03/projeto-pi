@@ -1,9 +1,12 @@
 #{extends 'main.html' /}
 #{set title: 'Lista'/}
 
-<br><br><br><br><br><br>	
-<div style="background-color: rgba(0, 0, 0, 0.096);" class="  text-white container justify-content-center d-flex">
-	<h2>Total de Pedidos: ${totalPedidos}</h2>
+<br><br><br><br><br><br>
+	
+<div class="totalPedidosDiv text-white container col-12 justify-content-left d-flex">
+	<h2>Total de Pedidos: ${totalPedidos}</h2> 
+	<a href="@{Produtos.listar}" class=" ms-5 bgVerde text-white text-decoration-none px-4 py-2 rounded-3">
+		Estoque</a>
 	</div>
 <div class="container d-flex mt-4 flex-row">	
 	
@@ -32,13 +35,11 @@
 				
 				<div class="card-footer border-0">
 					<div class="mt-2">
-						<a href="@{Pedidos.editar(ped.id)}" class="text-white text-decoration-none px-4 py-2 rounded-3"
-                        style="background-color: #aee239">
+						<a href="@{Pedidos.editar(ped.id)}" class="bgVerde text-white text-decoration-none px-4 py-2 rounded-3">
                           Editar</a>	
 					</div>
 					<div class="m-3">
-						<a href="@{Pedidos.delete(ped.id)}" class="text-white text-decoration-none px-4 py-2 rounded-3"
-                        style="background-color: #e23939">
+						<a href="@{Pedidos.delete(ped.id)}" class="bgVermelho text-white text-decoration-none px-4 py-2 rounded-3">
                           Remover</a>
 					</div>
 				</div>

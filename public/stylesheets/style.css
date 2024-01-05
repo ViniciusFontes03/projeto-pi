@@ -32,11 +32,24 @@ body{
  .cardListagem{
     padding: 30px;
     backdrop-filter: blur(10px);
-    border-radius: 10px;
+   
     align-items: center;
     background-color: rgba(0, 0, 0, 0.192);
     display: flex;
  }
+
+ .cardDisplayProdutos{
+   background-color: rgba(0, 0, 0, 0.192);
+   backdrop-filter: blur(10px); 
+   border-radius: 10px;
+   border-color: #aee239;
+}
+
+.cardListagemProdutos{
+   margin-left: 10px;
+   display: flex;
+   
+}
 
  .barraDePesquisa{
    border-radius: 10px;
@@ -64,4 +77,43 @@ body{
 
 .bgVerde{
    background-color: #aee239;
+}
+
+.bgVermelho{
+   background-color: #e23939;
+}
+
+.flashErroDetalhes{
+   color:#ffffff; 
+   font-size: 1.5em;
+}
+
+.tamFonte1{
+   font-size: 1.3em;
+}
+
+.blurNavbar{
+   backdrop-filter: blur(10px);
+}
+
+
+
+.bodyListaPedidos {
+   font-family: 'Arial', sans-serif;
+   background-color: #f4f4f4;
+   margin: 0;
+   padding: 0;
+}
+
+.container {
+   margin-top: 20px;
+}
+
+.mensagem {
+   color: #777;
+}
+
+.preco {
+   font-weight: bold;
+   color: #3498db;
 }

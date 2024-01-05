@@ -4,35 +4,29 @@
 <div class="container p-3 "> 
     <h2>Lista de Produtos</h2>
 </div>
-<div class="container col-8  p-4">
 
-	<table class="table table-hover ">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Nome</th>
-				<th>Preco</th>
-			</tr>
-		</thead>
-
-		<tbody>
-			#{list items:pdt, as:'p'}
-			<tr>
-				
-				<th>${p.id}</th>
-				<td>${p.nome}</td>
-				<td>${p.preco}</td>
-
-				<td>
-					<a class="btn btn-outline-dark" type="submit"  href="@{Produtos.editar(p.id)}">Editar</a>
-					<a class="btn btn-outline-dark" type="submit"  href="@{Produtos.deletar(p.id)}">Remover</a>
-				</td>
-				
-			</tr>
-			#{/list}
-		</tbody>
-	</table>
-	<div class="container p-3 d-flex justify-content-center ">	
-	    <a href="@{Produtos.form}" class=" col-2 btn btn-dark">Cadastrar novo produto</a>
+<div class="container col-8 p-4 cardDisplayProdutos" >
+<div class="row">
+	
+		<div class="col-12">
+	#{list items:pdt, as:'p'}
+			<div class=" justify-content-center cardListagemProdutos ">
+			<div class="card bg-transparent text-white">
+				<div class="card-body">
+					
+					<h5 class="card-title">${p.nome}</h5>
+					<p class="card-text preco">Preço: $ ${p.preco}</p>
+					#{if p.estoqueGas > 0}<p class="card-text">Estoque: ${p.estoqueGas}</p>#{/if}			
+					#{if p.estoqueAgua > 0}	<p class="card-text">Estoque: ${p.estoqueAgua}</p>#{/if}
+					
+				</div>
+			</div>
+		#{/list}
+		
 	</div>
+	</div>
+	</div>
+		
+</div>
+
 </div>
