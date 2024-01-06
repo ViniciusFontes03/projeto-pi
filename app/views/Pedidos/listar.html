@@ -10,6 +10,7 @@
 	</div>
 <div class="container d-flex mt-4 flex-row">	
 	
+	
 	#{list items:listaPed, as:'ped'}
 	<div class="container col-auto m-4 ">
 	<div class="row m-3" >
@@ -29,7 +30,7 @@
 					#{if ped.qntdAgua>0}
 					<p style="font-size: 1.2em;" class="card-text">Água: ${ped.qntdAgua}</p>
 					#{/if}
-					<p style="font-size: 1.2em;" class="card-text">Valor total: ${ped.valorAgua*ped.qntdAgua+ped.valorGas*ped.qntdGas}</p>
+					<p style="font-size: 1.2em;" class="card-text">Valor total: $ ${7*ped.qntdAgua+100*ped.qntdGas}.00 </p>
 					
 				</div>
 				
@@ -49,6 +50,8 @@
 		</div>
 		</div>
 	</div>
+	#{/list}
+
 	<div class="modal text-white fade modalDetalhesPedido" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog ">
     <div class="modal-content" style="background-color: rgba(59, 59, 59, 0.562);">
@@ -58,11 +61,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+		
         <h5>${ped.endereco}</h5>
 		<p>Quantidade de Garrafões de água: ${ped.qntdAgua} </p>
-			<p>Valor: ${ped.valorAgua} </p>
+			<p>Valor: $7.00 </p>
 		<p>Quantidade de Garrafões de água: ${ped.qntdGas} </p>
-		<p> Valor ${ped.valorGas}</p>
+		<p> Valor: $100.00</p>
 		<p>Endereço: </p>
 		${ped.endereco.logradouro}, ${ped.numero} -
 		${ped.endereco?.cep} -
@@ -70,11 +74,12 @@
 		${ped.endereco?.bairro?.nome} -
 	
 		${ped.endereco?.bairro?.cidade?.nome}/${ped.endereco?.bairro?.cidade?.uf}  <br/>
+	
       </div>
     </div>
   </div>
 </div>
-#{/list}
+
 
 
 

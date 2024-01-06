@@ -25,17 +25,12 @@ public class Pedido extends Model {
 	@Min(0)
     public Integer qntdAgua;
 	
-	@Min(0)
-	@Required
-    public Float valorAgua;
+	
 	
 	@Min(0)
 	@Required
     public Integer qntdGas;
 	
-	@Min(0)
-	@Required
-    public Float valorGas;
     
 
     public Date data;
