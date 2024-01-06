@@ -63,7 +63,13 @@
 			<p>Valor: ${ped.valorAgua} </p>
 		<p>Quantidade de Garrafões de água: ${ped.qntdGas} </p>
 		<p> Valor ${ped.valorGas}</p>
-
+		<p>Endereço: </p>
+		${ped.endereco.logradouro}, ${ped.numero} -
+		${ped.endereco?.cep} -
+	
+		${ped.endereco?.bairro?.nome} -
+	
+		${ped.endereco?.bairro?.cidade?.nome}/${ped.endereco?.bairro?.cidade?.uf}  <br/>
       </div>
     </div>
   </div>

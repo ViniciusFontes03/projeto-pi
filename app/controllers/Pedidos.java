@@ -1,10 +1,13 @@
 package controllers;
 
+import java.util.Arrays;
 import java.util.List;
 
-
+import models.Bairro;
+import models.Cidade;
 import models.Cliente;
 import models.Produto;
+import models.UF;
 import models.Pedido;
 import play.cache.Cache;
 import play.data.validation.Valid;
@@ -18,13 +21,15 @@ public class Pedidos extends Controller{
     	List <Cliente> cliLista = Cliente.findAll();
     	Pedido p = (Pedido) Cache.get("p"); 
         Cache.clear();
-        render(cliLista);
+        List<UF> ufs = Arrays.asList(UF.values());
+        render(cliLista, ufs);
     }
 
-    public static void cadastrar(@Valid Pedido p, Long idCliente) {
-
-    
-
+    public static void cadastrar(@Valid Pedido p, Long idCliente, 
+                                String cidade,
+                                String bairro,
+                                String uf) {
+                                    
        Long idAgua = (long) 2;
        Long idGas = (long) 3;
        int qntdAguaPedido = p.qntdAgua;
@@ -34,39 +39,59 @@ public class Pedidos extends Controller{
        Produto estoqueGas = Produto.findById(idGas);
 
 
-         if(idCliente != null) {
+        if(idCliente != null) {
             Cliente cli = Cliente.findById(idCliente);
             cli.pedidoCliente.add(p);
         }
 
+        validation.valid(p.endereco);
+		if (bairro.equals("")){
+			validation.addError("bairro", "Required");
+		}
+		if (cidade.equals("")){
+			validation.addError("cidade", "Required");
+		}
+		if (uf.equals("")){
+			validation.addError("uf", "Required");
+		}
+        Cidade c = Cidade.find("lower(nome) = lower(?1) and uf = ?2", cidade, UF.valueOf(uf) ).first();
+		if (c == null){
+			c = new Cidade(cidade, UF.valueOf(uf) );
+			c.save();
+		}
+		
+		Bairro b = Bairro.find("lower(nome) = lower(?1) and cidade.id = ?2 ", 
+								bairro, c.id).first();
+		if (b == null){
+			b = new Bairro(bairro, c );
+			b.save();
+		}
+        p.endereco.bairro = b;
+        
     	if (validation.hasErrors()) {
     		validation.keep();
             flash.error("Campos obrigatorios!");
     		Cache.set("p", p);
     		form();
-    	} 
-        else{
-                if (qntdAguaPedido > estoqueAgua.estoqueAgua)  {
-                flash.error("Estoque de água insuficiente!");
-                
-                form();
+    	} else{
+            if (qntdAguaPedido > estoqueAgua.estoqueAgua)  {
+            flash.error("Estoque de água insuficiente!");        
+            form();
 
-         }  else if(qntdGasPedido > estoqueGas.estoqueGas){
+        } else if(qntdGasPedido > estoqueGas.estoqueGas){
             flash.error("Estoque de gás insuficiente!");
-            
-                form();
+            form();
 
-         }
-         else {
-                flash.success("Pedido registrado!!");
-                estoqueAgua.estoqueAgua -= qntdAguaPedido;
-                estoqueGas.estoqueGas -= qntdGasPedido;
+        } else {
+            flash.success("Pedido registrado!!");
+            estoqueAgua.estoqueAgua -= qntdAguaPedido;
+            estoqueGas.estoqueGas -= qntdGasPedido;
 
-                estoqueAgua.save();
-                 estoqueGas.save();
-                 p.save();
+            estoqueAgua.save();
+            estoqueGas.save();
+            p.save();
             
-                 listar();
+            listar();
       }
             
             
@@ -79,7 +104,7 @@ public class Pedidos extends Controller{
         
         String filtro = params.get("filtro");
 
-    List<Pedido> listaPed;
+        List<Pedido> listaPed;
         if (filtro == null || filtro.isEmpty()) {
             listaPed = Pedido.findAll();
         } else{

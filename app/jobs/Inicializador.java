@@ -21,14 +21,14 @@ public class Inicializador extends Job {
         if (Produto.count() == 0) {
             Produto agua = new Produto();
 		    agua.nome = "Garrafão de água 20L";
-		    agua.preco = 7;
+		    agua.preco = 7f;
 			agua.estoqueAgua = 200;
 
 		    agua.save();
 		
 		    Produto gas = new Produto();
 		    gas.nome = "Botijão de gás 13kg";
-		    gas.preco = 100;
+		    gas.preco = 100f;
 			gas.estoqueGas = 100;
 
 		    gas.save();
