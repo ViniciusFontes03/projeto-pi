@@ -45,6 +45,17 @@
 		</div>
 
 		<div class="mb-3">
+			<label class="form-label">Estados:</label>
+			<select name="uf" id="uf">
+				<option></option>
+				#{list items:ufs, as:'uf'}
+					<option value="${uf}" #{if p?.endereco?.bairro?.cidade?.uf == uf} selected #{/if}>${uf}</option>
+				#{/list}
+			</select>
+			<span class='vermelho'>#{error 'uf' /}</span>
+		</div>
+
+		<div class="mb-3">
 			<label class="form-label">Bairro:</label>
 			<input autocomplete="off" type="text" id="bairro" name="bairro" class="form-control" value="${p?.endereco?.bairro?.nome}">
 		</div>
@@ -54,15 +65,7 @@
 			<input autocomplete="off" type="text" id="cidade" name="cidade" class="form-control" value="${p?.endereco?.bairro?.cidade?.nome}">
 		</div>
 
-		<div class="mb-3">
-			<label class="form-label">Estados:</label>
-			<select name="uf" id="uf">
-				<option></option>
-				#{list items:ufs, as:'uf'}
-					<option value="${uf}" #{if cliente?.endereco?.bairro?.cidade?.uf == uf} selected #{/if}>${uf}</option>
-				#{/list}
-			</select>
-		</div>
+		
 
 		<div class="container col-8 d-flex">
 			<div class="m-3">
