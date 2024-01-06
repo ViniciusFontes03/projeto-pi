@@ -24,15 +24,11 @@ public class Pedido extends Model {
 	@Required
 	@Min(0)
     public Integer qntdAgua;
-	
-	
-	
+			
 	@Min(0)
 	@Required
     public Integer qntdGas;
 	
-    
-
     public Date data;
 
     @ManyToOne

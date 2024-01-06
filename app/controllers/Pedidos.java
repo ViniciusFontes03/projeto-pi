@@ -32,8 +32,8 @@ public class Pedidos extends Controller{
                                     
        Long idAgua = (long) 2;
        Long idGas = (long) 3;
-       int qntdAguaPedido = p.qntdAgua;
-       int qntdGasPedido = p.qntdGas;
+       Integer qntdAguaPedido = p.qntdAgua;
+       Integer qntdGasPedido = p.qntdGas;
 
        Produto estoqueAgua = Produto.findById(idAgua);
        Produto estoqueGas = Produto.findById(idGas);
